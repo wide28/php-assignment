@@ -151,6 +151,3 @@ include "db.php";
 
 </body>
 </html>
-
-
-
