@@ -1,5 +1,5 @@
 <?php 
-include "protected.php";   // FIXED include path
+include "protected.php"; // same
 include "db.php"; 
 ?>
 <!DOCTYPE html>
@@ -9,105 +9,136 @@ include "db.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employees</title>
 
-    <!-- Internal CSS -->
+    <!-- Modern UI Design Only (NO PHP changes) -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            font-family: Poppins, Arial, sans-serif;
+            background: #eef1f5;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
-        h3 {
-            color: #333;
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #004aad;
+            color: white;
+            padding: 18px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        header h3 {
+            margin: 0;
         }
 
         .logout-btn {
-            text-decoration: none;
+            background: #ff4d4d;
+            padding: 8px 14px;
+            border-radius: 6px;
             color: white;
-            background: #007bff;
-            padding: 6px 10px;
-            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
         }
-
         .logout-btn:hover {
-            background: #0056b3;
+            background: #d90000;
         }
 
+        h2 {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        /* Form Styling */
         form {
             background: white;
-            padding: 20px;
-            width: 350px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px #ccc;
-            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
         }
 
         form input {
             width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #aaa;
-            border-radius: 5px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 15px;
         }
 
         form button {
             width: 100%;
-            padding: 10px;
-            background: green;
-            color: white;
+            padding: 12px;
+            background: #28a745;
             border: none;
-            border-radius: 5px;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 15px;
+            font-weight: bold;
         }
-
         form button:hover {
-            background: darkgreen;
+            background: #1e7e34;
         }
 
+        /* Table Styling */
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            box-shadow: 0px 0px 10px #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
         }
 
-        table th, table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        table th {
-            background: #007bff;
+        th {
+            background: #004aad;
             color: white;
+            padding: 14px;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #f7faff;
         }
 
         .action-btn {
-            padding: 5px 8px;
-            border-radius: 4px;
+            padding: 6px 10px;
+            border-radius: 6px;
             color: white;
             text-decoration: none;
+            font-size: 14px;
         }
 
-        .edit-btn {
-            background: orange;
-        }
+        .edit-btn { background: #ff9800; }
+        .edit-btn:hover { background: #c77700; }
 
-        .delete-btn {
-            background: red;
-        }
-
-        .edit-btn:hover { background: darkorange; }
-        .delete-btn:hover { background: darkred; }
+        .delete-btn { background: #e60000; }
+        .delete-btn:hover { background: #990000; }
 
     </style>
 </head>
 <body>
 
-<h3>Welcome, <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'User'; ?></h3>
-<a class="logout-btn" href="logout.php">Logout</a>
+<div class="container">
+
+<header>
+    <h3>Welcome, <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'User'; ?></h3>
+    <a class="logout-btn" href="logout.php">Logout</a>
+</header>
 
 <h2>Add Employee</h2>
 
@@ -148,6 +179,8 @@ include "db.php";
     </tr>
     <?php endwhile; ?>
 </table>
+
+</div>
 
 </body>
 </html>
